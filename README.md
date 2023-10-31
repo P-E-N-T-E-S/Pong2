@@ -52,9 +52,20 @@ Para executar o Pong2, siga estas etapas:
 
 ## 👩‍💻 Membros
 
-- Thomaz R. Lima
-- Pedro S. Souza
-- Sofia Saraiva
+<ul>
+  <li>
+    <a href="https://github.com/Thomazrlima">Thomaz Lima</a> -
+    trl@cesar.school 📩
+  </li>
+  <li>
+    <a href="https://github.com/hsspedro">Pedro Henrique Silva</a> -
+    phss@cesar.school 📩
+  </li>
+  <li>
+    <a href="https://github.com/Sofia-Saraiva">Sofia Saraiva</a> -
+    spscl@cesar.school 📩
+  </li>
+</ul>
 
 <table>
   <tr>
