@@ -1,48 +1,47 @@
-#include "function.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "function.h"
 
 
 int main(){
-    FILE *fptr;
+    pontuacao pontos;
     int op;
-    Pontos pontos;
-    fptr = fopen("pontuacao.dat", "ab+");
+    FILE *file;
+    file = fopen("pontos.txt", "w");
 
-    if (fptr == NULL)
-    {
+    if(file == NULL){
         exit(1);
     }
 
-    fflush(fptr);
-    fseek(fptr, 0, 0);
 
-    while (1)
-    {
-        printf(" 1 - Iniciar \n 2 - Pontuacao\n 3 - Sair\n");
-        printf("Opçao: ");
+    while(1){
+        puts("1 - Jogar\n2 - Ajuda\n3 - Pontuacao\n4 - Sair\n");
+        printf("Insira a opçao: ");
         scanf("%d", &op);
 
-        switch (op)
-        {
+        switch (op){
         case 1:
+            Tela();
+            break;
+        case 2:
             break;
 
-        case 2:
-            while (fread(&pontos, sizeof(Pontos), 1, fptr) == 1){
-                Pontuacao(pontos);
+        case 3:
+
+            puts("\n\nPONTUACAO");
+            puts("==================================");
+            fseek(file, 0, SEEK_SET);
+            while (fread(&pontos, sizeof(pontuacao), 1, file) == 1){
+                PrintPontos(pontos);
             }
             break;
-        
-        
-        default:
-            puts("\n\nATÉ MAIS!");
-            puts("==================================");
-            exit(1);
-        }
 
+        default:
+            exit(1);
+            break;
+        }
     }
-    
-    
+
+
     return 0;
 }

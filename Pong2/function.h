@@ -1,13 +1,15 @@
-#ifndef __FUNCTION__
-#define Macro_X 64
-#define Macro_Y 48
+#include <stdio.h>
+#define altura 20
+#define largura 50
 
-typedef struct{
+
+typedef struct pontuacao{
     int player1;
     int player2;
-    struct pontos *next;
-}Pontos;
+    struct pontuacao *next;
 
+}pontuacao;
 
-void Pontuacao(Pontos pontos);
-#endif
+void Tela();
+void EscreverArquivo(FILE* arquivo, pontuacao players);
+void PrintPontos(pontuacao pontos);
