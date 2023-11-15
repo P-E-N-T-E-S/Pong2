@@ -15,8 +15,9 @@ int main(){
 
 
     while(1){
-        puts("1 - Jogar\n2 - Ajuda\n3 - Pontuacao\n4 - Sair\n");
-        printf("Insira a opçao: ");
+        printf("O que você deseja fazer?\n");
+        puts("\n1 - Jogar\n2 - Ajuda\n3 - Histórico\n4 - Sair\n");
+        printf("Opcao: ");
         scanf("%d", &op);
 
         switch (op){
@@ -28,7 +29,7 @@ int main(){
 
         case 3:
 
-            puts("\n\nPONTUACAO");
+            puts("\n\nPONTUAÇÃO");
             puts("==================================");
             fseek(file, 0, SEEK_SET);
             while (fread(&pontos, sizeof(pontuacao), 1, file) == 1){

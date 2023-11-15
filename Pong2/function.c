@@ -4,6 +4,7 @@
 
 
 void Tela(){
+    printf("\n\t\t\t\t\tATENÇÃO:  MATENHA CAPS LOCK DESATIVADA\n\n");
     for(int i = 0; i < largura; i++){
         printf("░");
     }
@@ -32,7 +33,6 @@ void Tela(){
     }
     printf("\n");
 }
-
 
 void EscreverArquivo(FILE* arquivo, pontuacao players){  
     fprintf(arquivo, "Player 1: %d\n", players.player1);
