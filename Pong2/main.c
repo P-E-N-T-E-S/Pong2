@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "function.h"
 #include <unistd.h>
+#include <time.h>
 
 
 int main(){
@@ -29,7 +30,7 @@ int main(){
             AtualizarBola();
             usleep(100000);
         }
-        
+
             break;
         case 2:
             break;

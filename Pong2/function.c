@@ -6,6 +6,9 @@ int bolaX = 5;
 int bolaY = 5;
 int velocidadeX = 1;
 int velocidadeY = 1;
+int seg = 60;
+int mim = 2;
+int temp = 0;
 
 
 void Tela() {
@@ -35,6 +38,24 @@ void Tela() {
         printf("░");
     }
     printf("\n");
+
+    temp++;
+
+    if(temp%10 == 0){
+      seg--;
+    }
+  
+    if(mim==0 && seg==0)
+    {
+      printf("O tempo acabou !");
+    }
+      printf("\n\n%02d:%02d\n\n",mim,seg);
+
+      if(seg==0)
+      {
+          mim--;
+          seg=seg+60;
+      }
 }
 
 void EscreverArquivo(FILE* arquivo, pontuacao players){  

@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <time.h>
 
 extern int bolaX;
 extern int bolaY;
@@ -24,6 +25,5 @@ void EscreverArquivo(FILE* arquivo, pontuacao players);
 void PrintPontos(pontuacao pontos);
 void AtualizarBola();
 void LimparTela();
-
 
 #endif
