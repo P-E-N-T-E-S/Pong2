@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "function.h"
+#include <unistd.h>
 
 
 int main(){
@@ -22,7 +23,13 @@ int main(){
 
         switch (op){
         case 1:
+        while (1)
+        {
             Tela();
+            AtualizarBola();
+            usleep(100000);
+        }
+        
             break;
         case 2:
             break;
