@@ -3,7 +3,7 @@
 #include "function.h"
 #include <unistd.h>
 #include <time.h>
-//#include "keyboard.h"
+#include "keyboard.h"
 
 int barraEsquerda = 10;
 int barraDireita = 10;
@@ -14,6 +14,7 @@ int main(){
     int op;
     FILE *file;
     file = fopen("pontos.txt", "w");
+    int jogando = 0;
 
     if(file == NULL){
         exit(1);
@@ -28,13 +29,44 @@ int main(){
 
         switch (op){
         case 1:
-        while (1)
-        {
-            Tela();
-            AtualizarBola();
-            usleep(100000);
-        }
-
+            jogando = 1;
+            keyboardInit();
+            while (jogando) {
+                if (keyhit()) {
+                    char keyPressed = readch();
+                    if (keyPressed == 'w') {
+                        if (barraEsquerda > 0) {
+                            barraEsquerda--;
+                            Tela();
+                        }
+                    }
+                    if(keyPressed == 's'){
+                        if(barraEsquerda < altura - 4){
+                            barraEsquerda++;
+                            Tela();
+                        }
+                    }
+                    if (keyPressed == 'i')
+                    {
+                        if(barraDireita > 0){
+                            barraDireita--;
+                            Tela();
+                        }
+                    }
+                    if (keyPressed == 'j')
+                    {
+                        if (barraDireita < altura -4)
+                        {
+                            barraDireita++;
+                            Tela();
+                        }
+                    }
+                }
+                Tela();
+                AtualizarBola();
+                usleep(100000);
+            }
+            keyboardDestroy();
             break;
         case 2:
             break;

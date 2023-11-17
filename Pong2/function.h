@@ -27,5 +27,5 @@ void EscreverArquivo(FILE* arquivo, pontuacao players);
 void PrintPontos(pontuacao pontos);
 void AtualizarBola();
 void LimparTela();
-
+void Tempo();
 #endif
