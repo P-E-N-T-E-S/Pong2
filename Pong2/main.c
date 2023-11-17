@@ -4,6 +4,9 @@
 #include <unistd.h>
 #include <time.h>
 
+int barraEsquerda = 10;
+int barraDireita = 10; 
+
 
 int main(){
     pontuacao pontos;
@@ -26,6 +29,7 @@ int main(){
         case 1:
         while (1)
         {
+            
             Tela();
             AtualizarBola();
             usleep(100000);

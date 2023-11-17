@@ -9,6 +9,8 @@ extern int bolaX;
 extern int bolaY;
 extern int velocidadeX;
 extern int velocidadeY;
+extern int barraEsquerda;
+extern int barraDireita;
 #define altura 20
 #define largura 50
 
