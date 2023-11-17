@@ -18,7 +18,7 @@ struct pontuacao player;
 void Tela() {
     LimparTela();
 
-    printf("%d X %d\n", player.player1, player.player2);
+    printf("\t\t\t\t\t  %d | %d \n\n", player.player1, player.player2);
 
     for (int i = 0; i < altura; i++) {
         for (int j = 0; j < largura; j++) {
@@ -49,7 +49,7 @@ void Tela() {
         printf("O tempo acabou !");
         exit(1);
     }
-    printf("\n\n%02d:%02d\n\n", mim, seg);
+    printf("\n\t\t\t\t\t  %02d:%02d\n\n", mim, seg);
 
     if (seg == 0) {
         mim--;
