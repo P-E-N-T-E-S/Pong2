@@ -9,8 +9,7 @@ int velocidadeY = 1;
 int seg = 30;
 int mim = 1;
 int temp = 0;
-int barraEsquerda;
-int barraDireita;
+int pass = 0;
 
 
 void Tela() {
@@ -50,6 +49,16 @@ void Tela() {
     if (seg == 0) {
         mim--;
         seg = seg + 60;
+    }
+
+    if (temp == 300) {
+        pass = 1;
+        velocidadeX *= 2;
+    }
+  
+    if (temp == 600) {
+        pass = 2;
+        velocidadeX /= 2;
     }
 }
 
