@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "function.h"
+//#include "keyboard.h"
 
 int bolaX = 5;
 int bolaY = 5;
@@ -10,10 +11,14 @@ int seg = 30;
 int mim = 1;
 int temp = 0;
 int pass = 0;
+struct pontuacao player;
+
 
 
 void Tela() {
     LimparTela();
+
+    printf("%d X %d\n", player.player1, player.player2);
 
     for (int i = 0; i < altura; i++) {
         for (int j = 0; j < largura; j++) {
@@ -79,10 +84,12 @@ void AtualizarBola() {
     bolaY += velocidadeY;
 
     if (bolaX <= 0) {
+        player.player2++;
         velocidadeX = -velocidadeX;
     }
 
     if (bolaX >= largura - 1) {
+        player.player1++;
         velocidadeX = -velocidadeX;
     }
 
@@ -106,3 +113,4 @@ void AtualizarBola() {
 void LimparTela() {
     system("clear");
 }
+

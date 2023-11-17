@@ -3,6 +3,7 @@
 #include "function.h"
 #include <unistd.h>
 #include <time.h>
+//#include "keyboard.h"
 
 int barraEsquerda = 10;
 int barraDireita = 10;
@@ -29,7 +30,6 @@ int main(){
         case 1:
         while (1)
         {
-            
             Tela();
             AtualizarBola();
             usleep(100000);
