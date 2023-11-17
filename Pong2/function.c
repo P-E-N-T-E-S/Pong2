@@ -6,8 +6,8 @@ int bolaX = 5;
 int bolaY = 5;
 int velocidadeX = 1;
 int velocidadeY = 1;
-int seg = 60;
-int mim = 2;
+int seg = 30;
+int mim = 1;
 int temp = 0;
 int barraEsquerda;
 int barraDireita;
@@ -43,6 +43,7 @@ void Tela() {
 
     if (mim == 0 && seg == 0) {
         printf("O tempo acabou !");
+        exit(1);
     }
     printf("\n\n%02d:%02d\n\n", mim, seg);
 

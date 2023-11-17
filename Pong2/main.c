@@ -5,7 +5,7 @@
 #include <time.h>
 
 int barraEsquerda = 10;
-int barraDireita = 10; 
+int barraDireita = 10;
 
 
 int main(){
