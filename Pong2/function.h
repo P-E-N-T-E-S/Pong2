@@ -23,9 +23,9 @@ typedef struct pontuacao{
 }pontuacao;
 
 void Tela();
-void EscreverArquivo(FILE* arquivo, pontuacao players);
-void PrintPontos(pontuacao pontos);
+void EscreverArquivo(struct pontuacao **head);
+void PrintPontos();
 void AtualizarBola();
 void LimparTela();
-
+void Tempo();
 #endif
