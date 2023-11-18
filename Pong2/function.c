@@ -56,45 +56,45 @@ void Tela() {
 }
 
 void EscreverArquivo(struct pontuacao **head) {
-  FILE *fptr;
-  fptr = fopen("pontos.txt", "ab+");
+    FILE *fptr;
+    fptr = fopen("pontos.txt", "wb+");
 
-  if (fptr == NULL) {
-    exit(1);
-  } else {
-    struct pontuacao *n = *head;
+    if (fptr == NULL) {
+        exit(1);
+    } else {
+        struct pontuacao *n = *head;
 
-    while (n != NULL) {
-      fwrite(n, sizeof(struct pontuacao), 1, fptr);
-      n = n->next;
+        while (n != NULL) {
+            fwrite(n, sizeof(struct pontuacao), 1, fptr);
+            n = n->next;
+        }
+
+        fclose(fptr);
     }
-
-    fclose(fptr);
-  }
 }
 
 void PrintPontos() {
-  FILE *fptr;
-  fptr = fopen("pontos.txt", "ab+");
+    FILE *fptr;
+    fptr = fopen("pontos.txt", "rb");
 
-  if (fptr == NULL) {
-    exit(1);
-  } else {
-    struct pontuacao pontos;
+    if (fptr == NULL) {
+        exit(1);
+    } else {
+        struct pontuacao pontos;
 
-    printf("\n\tPlayer 1: %d\n", player.player1);
-    printf("\tPlayer 2: %d\n", player.player2);
-    puts("==================================");
+        printf("\n\tPlayer 1: %d\n", player.player1);
+        printf("\tPlayer 2: %d\n", player.player2);
+        puts("==================================");
 
-    fseek(fptr, 0, SEEK_SET);
-    while (fread(&pontos, sizeof(struct pontuacao), 1, fptr) == 1) {
-      printf("\n\tPlayer 1: %d\n", pontos.player1);
-      printf("\tPlayer 2: %d\n", pontos.player2);
-      puts("==================================");
+        fseek(fptr, 0, SEEK_SET);
+        while (fread(&pontos, sizeof(struct pontuacao), 1, fptr) == 1) {
+            printf("\n\tPlayer 1: %d\n", pontos.player1);
+            printf("\tPlayer 2: %d\n", pontos.player2);
+            puts("==================================");
+        }
+
+        fclose(fptr);
     }
-
-    fclose(fptr);
-  }
 }
 
 void AtualizarBola() {
