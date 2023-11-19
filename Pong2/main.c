@@ -64,6 +64,7 @@ int main(){
                 }
                 Tela();
                 AtualizarBola();
+                AtualizarSegundaBola();
                 usleep(100000);
             }
             keyboardDestroy();

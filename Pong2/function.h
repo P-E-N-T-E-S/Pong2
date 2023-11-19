@@ -30,4 +30,5 @@ void LimparTela();
 void Tempo();
 int radom();
 void remover(int x);
+void AtualizarSegundaBola();
 #endif

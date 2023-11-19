@@ -8,11 +8,15 @@ int bolaX = 5;
 int bolaY = 5;
 int velocidadeX = 1;
 int velocidadeY = 1;
+int segundaBolaX = 10;
+int segundaBolaY = 15;
+int velocidadeX2 = -1;
+int velocidadeY2 = -1;
 int seg = 30;
 int mim = 1;
 int temp = 0;
 int pass = 0;
-int aux = 0, x, val = 1;
+int x, val = 1;
 struct pontuacao player;
 struct pontuacao *head = NULL;
 
@@ -34,9 +38,9 @@ void Tela() {
         printf("█");
       } else if (i == (int)bolaY && j == (int)bolaX) {
         printf("O");
-      }else if (i == (int)bolaY && j == (int)bolaX && aux == 1) {
-        printf("O");
-      } else {
+      }else if (temp >= 500 && i == (int)segundaBolaY && j == (int)segundaBolaX) {
+        printf("o");
+      }else {
         printf(" ");
       }
     }
@@ -48,9 +52,6 @@ void Tela() {
     if(x == 1){
       velocidadeX *= 2;
       velocidadeY *= 2;
-    }
-    if(x == 2){
-      aux = 1;
     }
     if(x == 3){
       val = 2;
@@ -145,6 +146,36 @@ void AtualizarBola() {
   }
 }
 
+void AtualizarSegundaBola() {
+  if(temp >= 500){
+    segundaBolaX += velocidadeX2;
+    segundaBolaY += velocidadeY2;
+
+    if (segundaBolaX <= 0) {
+      player.player2 += 1 * val;
+      velocidadeX2 = -velocidadeX2;
+    }
+
+    if (segundaBolaX >= largura - 1) {
+      player.player1 += 1 * val;
+      velocidadeX2 = -velocidadeX2;
+    }
+
+    if (segundaBolaY <= 0 || segundaBolaY >= altura - 1) {
+      velocidadeY2 = -velocidadeY2;
+    }
+
+    if (segundaBolaX == 2) {
+      if (segundaBolaY >= barraEsquerda - 2 && segundaBolaY <= barraEsquerda + 2) {
+        velocidadeX2 = -velocidadeX2;
+      }
+    }
+
+    if (segundaBolaX == largura - 3 && (segundaBolaY >= barraDireita - 2 && segundaBolaY <= barraDireita + 2)) {
+      velocidadeX2 = -velocidadeX2;
+    }
+  }
+}
 void LimparTela() { system("clear"); }
 
 void Tempo() {
@@ -177,9 +208,6 @@ void remover(int x){
   if(x == 1){
     velocidadeX /= 2;
     velocidadeY /= 2;
-  }
-  if(x == 2){
-    aux = 0;
   }
   if(x == 3){
     val = 1;
