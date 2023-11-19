@@ -23,9 +23,11 @@ typedef struct pontuacao{
 }pontuacao;
 
 void Tela();
-void EscreverArquivo(struct pontuacao **head);
+void EscreverArquivo(struct pontuacao *head);
 void PrintPontos();
 void AtualizarBola();
 void LimparTela();
 void Tempo();
+int radom();
+void remover(int x);
 #endif

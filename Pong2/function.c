@@ -2,6 +2,7 @@
 #include "keyboard.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int bolaX = 5;
 int bolaY = 5;
@@ -11,6 +12,7 @@ int seg = 30;
 int mim = 1;
 int temp = 0;
 int pass = 0;
+int aux = 0, x, val = 1;
 struct pontuacao player;
 struct pontuacao *head = NULL;
 
@@ -32,6 +34,8 @@ void Tela() {
         printf("█");
       } else if (i == (int)bolaY && j == (int)bolaX) {
         printf("O");
+      }else if (i == (int)bolaY && j == (int)bolaX && aux == 1) {
+        printf("O");
       } else {
         printf(" ");
       }
@@ -39,10 +43,23 @@ void Tela() {
     printf("\n");
   }
 
-  temp++;
+  if (temp == 300) {
+    x = radom();
+    if(x == 1){
+      velocidadeX *= 2;
+      velocidadeY *= 2;
+    }
+    if(x == 2){
+      aux = 1;
+    }
+    if(x == 3){
+      val = 2;
+    }
+  }
 
-  if (temp % 10 == 0) {
-    seg--;
+  if (temp == 600) {
+    remover(x);
+    radom();
   }
 
   if (mim == 0 && seg == 0) {
@@ -55,18 +72,19 @@ void Tela() {
   Tempo();
 }
 
-void EscreverArquivo(struct pontuacao **head) {
+void EscreverArquivo(struct pontuacao *head) {
     FILE *fptr;
-    fptr = fopen("pontos.txt", "wb+");
+    fptr = fopen("pontos.txt", "wb");
 
     if (fptr == NULL) {
+        perror("Erro ao abrir o arquivo");
         exit(1);
     } else {
-        struct pontuacao *n = *head;
+        struct pontuacao *temp = head;
 
-        while (n != NULL) {
-            fwrite(n, sizeof(struct pontuacao), 1, fptr);
-            n = n->next;
+        while (temp != NULL) {
+            fwrite(temp, sizeof(struct pontuacao), 1, fptr);
+              temp = temp->next;
         }
 
         fclose(fptr);
@@ -102,12 +120,12 @@ void AtualizarBola() {
   bolaY += velocidadeY;
 
   if (bolaX <= 0) {
-    player.player2++;
+    player.player2 += 1*val;
     velocidadeX = -velocidadeX;
   }
 
   if (bolaX >= largura - 1) {
-    player.player1++;
+    player.player1 += 1*val;
     velocidadeX = -velocidadeX;
   }
 
@@ -148,14 +166,22 @@ void Tempo() {
     mim--;
     seg = seg + 60;
   }
+}
 
-  if (temp == 300) {
-    pass = 1;
-    velocidadeX *= 2;
-  }
+int radom(){
+  int x = rand() % 3 + 1;
+  return x;
+}
 
-  if (temp == 600) {
-    pass = 2;
+void remover(int x){
+  if(x == 1){
     velocidadeX /= 2;
+    velocidadeY /= 2;
+  }
+  if(x == 2){
+    aux = 0;
+  }
+  if(x == 3){
+    val = 1;
   }
 }
