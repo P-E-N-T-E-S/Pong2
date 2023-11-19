@@ -70,10 +70,17 @@ int main(){
             keyboardDestroy();
             break;
         case 2:
+            system("clear");
+            printf("\nControles:\n");
+            printf("\nJogador 1:\n\nW - Cima\nS - Baixo\n");
+            printf("\nJogador 2:\n\nI - Cima\nJ - Baixo\n");
+            printf("\nEventos:\n");
+            printf("\nA cada 30s um novo evento aparece, e eles são:\n");
+            printf("\nBola dupla\nPontos duplos\nVelocidade Dobrada\n\n");
             break;
 
         case 3:
-
+            system("clear");
             puts("\n\nPONTUAÇÃO");
             puts("==================================");
             fseek(file, 0, SEEK_SET);
