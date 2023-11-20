@@ -16,7 +16,7 @@ int seg = 30;
 int mim = 1;
 int temp = 0;
 int pass = 0;
-int x, val = 1;
+int x, val = 1, aux = 0;
 struct pontuacao player;
 struct pontuacao *head = NULL;
 
@@ -38,7 +38,7 @@ void Tela() {
         printf("█");
       } else if (i == (int)bolaY && j == (int)bolaX) {
         printf("O");
-      }else if (temp >= 500 && i == (int)segundaBolaY && j == (int)segundaBolaX) {
+      }else if (aux == 1 && i == (int)segundaBolaY && j == (int)segundaBolaX) {
         printf("o");
       }else {
         printf(" ");
@@ -48,10 +48,13 @@ void Tela() {
   }
 
   if (temp == 300) {
-    x = radom();
+    x = rand() % 3;
     if(x == 1){
       velocidadeX *= 2;
       velocidadeY *= 2;
+    }
+    if(x == 2){
+      aux = 1;
     }
     if(x == 3){
       val = 2;
@@ -60,7 +63,6 @@ void Tela() {
 
   if (temp == 600) {
     remover(x);
-    radom();
   }
 
   if (mim == 0 && seg == 0) {
@@ -147,7 +149,7 @@ void AtualizarBola() {
 }
 
 void AtualizarSegundaBola() {
-  if(temp >= 500){
+  if(aux == 1){
     segundaBolaX += velocidadeX2;
     segundaBolaY += velocidadeY2;
 
@@ -197,11 +199,6 @@ void Tempo() {
     mim--;
     seg = seg + 60;
   }
-}
-
-int radom(){
-  int x = rand() % 3 + 1;
-  return x;
 }
 
 void remover(int x){
