@@ -18,6 +18,7 @@ Pong2 é uma reinvenção do clássico jogo Pong, desenvolvido como parte do Cad
 
 Seguindo o clássico jogo de arcade Pong, no qual dois jogadores controlam raquetes para rebater uma bola de um lado para o outro, com o objetivo de marcar pontos fazendo a bola passar pelo oponente, decidimos implementar Pong 2, com novas funcionalidades:
 
+
 #### ⚾ Múltiplas Bolas: 
 Diferentemente do Pong tradicional, no Pong2 você terá que lidar com múltiplas bolas em jogo ao mesmo tempo. Cada bola pode ter suas próprias propriedades e velocidade, tornando o jogo mais desafiador do que nunca.
 
