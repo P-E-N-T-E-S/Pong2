@@ -22,8 +22,8 @@ struct pontuacao *head = NULL;
 
 void Tela() {
   LimparTela();
-
-  printf("\t\t\t\t\t  %d | %d \n\n", player.player1, player.player2);
+  randomizar();
+  printf("\t\t %d | %d \n\n", player.player1, player.player2);
 
   for (int i = 0; i < altura; i++) {
     for (int j = 0; j < largura; j++) {
@@ -47,29 +47,8 @@ void Tela() {
     printf("\n");
   }
 
-  if (temp == 300) {
-    x = rand() % 3 - 1;
-    if (x == 1) {
-      velocidadeX *= 2;
-      velocidadeY *= 2;
-    }
-    else if (x == 2) {
-      aux = 1;
-    }
-    else if (x == 3) {
-      val = 2;
-    }
-  }
-
-  if (temp == 600) {
-    remover(x);
-  }
-
-  if (mim == 0 && seg == 0) {
-    exit(1);
-  }
-
   Tempo();
+  PrintarEvento(x);
 }
 
 void AdicionarPonto(int p1, int p2) {
@@ -128,11 +107,17 @@ void AtualizarBola() {
   if (bolaX <= 0) {
     player.player2 += 1 * val;
     velocidadeX = -velocidadeX;
+    bolaX = 25;
+    bolaY = 10;
+    usleep(600000);
   }
 
   if (bolaX >= largura - 1) {
     player.player1 += 1 * val;
     velocidadeX = -velocidadeX;
+    bolaX = 25;
+    bolaY = 10;
+    usleep(600000);
   }
 
   if (bolaY <= 0 || bolaY >= altura - 1) {
@@ -183,6 +168,8 @@ void AtualizarSegundaBola() {
     }
   }
 }
+
+
 void LimparTela() { system("clear"); }
 
 void Tempo() {
@@ -212,10 +199,63 @@ void Tempo() {
 
 void remover(int x) {
   if (x == 1) {
-    velocidadeX /= 2;
-    velocidadeY /= 2;
+    velocidadeX = 1;
+    velocidadeY = 1;
+    x = 0;
+  }
+  if(x == 2){
+    aux = 0;
+    x = 0;
   }
   if (x == 3) {
     val = 1;
+    x = 0;
+  }
+}
+
+void randomizar(){
+    srand(time(NULL));
+    if (temp == 300) {
+    x = 1 + rand() % 3;
+    printf("%d", x);
+    if (x == 1) {
+      velocidadeX *= 2;
+      velocidadeY *= 2;
+    }
+    else if (x == 2) {
+      aux = 1;
+    }
+    else if (x == 3) {
+      val = 2;
+    }
+  }
+
+  if (temp == 600) {
+    remover(x);
+    x = 1 + rand() % 3;
+    printf("%d", x);
+    if (x == 1) {
+      velocidadeX *= 2;
+      velocidadeY *= 2;
+    }
+    else if (x == 2) {
+      aux = 1;
+    }
+    else if (x == 3) {
+      val = 2;
+    }
+  }
+}
+
+
+void PrintarEvento(int x){
+  if(x == 1){
+    printf("\n\t\tVelocidade em 2X, Cuidado!\n\n");
+  }
+  if(x == 2){
+    printf("\n\t\tO dobro de bolas? Agora prove seu valor!\n\n");
+  }
+  if(x == 3){
+    printf("\n\tPontuação duplicada, essa é a hora de virar!\n\n");
   }
 }

@@ -30,7 +30,8 @@ void LiberarPonto();
 void AtualizarBola();
 void LimparTela();
 void Tempo();
-int radom();
+void randomizar();
 void remover(int x);
 void AtualizarSegundaBola();
+void PrintarEvento(int x);
 #endif

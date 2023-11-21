@@ -1,0 +1,13 @@
+Player 1: 9 | Player 2: 9
+Player 1: 9 | Player 2: 9
+Player 1: 13 | Player 2: 13
+Player 1: 13 | Player 2: 13
+Player 1: 17 | Player 2: 14
+Player 1: 17 | Player 2: 14
+Player 1: 10 | Player 2: 12
+Player 1: 14 | Player 2: 12
+Player 1: 16 | Player 2: 19
+Player 1: 17 | Player 2: 18
+Player 1: 14 | Player 2: 17
+Player 1: 17 | Player 2: 12
+Player 1: 1 | Player 2: 20
