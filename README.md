@@ -33,8 +33,7 @@ Diferentemente do Pong tradicional, no Pong2 você terá que lidar com múltipla
 Para executar o Pong2, siga estas etapas:
 
 1. Clone este repositório em sua máquina:
-
-  `git clone https://github.com/P-E-N-T-E-S/Pong2.git`
+   `git clone https://github.com/P-E-N-T-E-S/Pong2.git`
 
 3. Compile o programa:
    `gcc function.c function.h main.c keyboard.h keyboard.c -o main`
