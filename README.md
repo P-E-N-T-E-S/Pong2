@@ -22,6 +22,12 @@ Seguindo o clássico jogo de arcade Pong, no qual dois jogadores controlam raque
 
 Diferentemente do Pong tradicional, no Pong2 você terá que lidar com múltiplas bolas em jogo ao mesmo tempo. Cada bola pode ter suas próprias propriedades e velocidade, tornando o jogo mais desafiador do que nunca.
 
+### 👾 Pontuação Duplicada:
+Em um determinado momento do jogo você vai ter que se atentar, pois os pontos valem 2!
+
+### ⚡️ Alta Velocidade:
+A velocidade das bolas é duplicada.
+
 ## 🕹️ Como Jogar
 
 - Use as teclas de seta ou as teclas "w" e "s" para controlar a raquete no lado esquerdo da tela e "i" e "k" para controlar a raquete no lado direito da tela.
