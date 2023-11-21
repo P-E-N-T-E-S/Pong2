@@ -22,21 +22,11 @@ Seguindo o clássico jogo de arcade Pong, no qual dois jogadores controlam raque
 
 Diferentemente do Pong tradicional, no Pong2 você terá que lidar com múltiplas bolas em jogo ao mesmo tempo. Cada bola pode ter suas próprias propriedades e velocidade, tornando o jogo mais desafiador do que nunca.
 
-#### 👾 Power-Ups: 
-
-Introduzimos power-ups que aparecem aleatoriamente durante o jogo. Esses power-ups podem afetar o jogo de várias maneiras, como aumentar o tamanho da raquete, adicionar bolas adicionais ou conceder habilidades especiais.
-
-#### 🛑 Obstáculos: 
-
-Os obstáculos são elementos adicionados à área de jogo que podem criar desafios adicionais para os jogadores. Alguns obstáculos podem desviar a bola, enquanto outros podem bloquear temporariamente a trajetória da bola.
-
 ## 🕹️ Como Jogar
 
-- Use as teclas de seta ou as teclas "W" e "S" para controlar a raquete no lado esquerdo da tela.
-- Para o modo multijogador, o segundo jogador pode usar as teclas "Seta para cima" e "Seta para baixo" ou as teclas "I" e "K" para controlar a raquete no lado direito da tela.
+- Use as teclas de seta ou as teclas "w" e "s" para controlar a raquete no lado esquerdo da tela e "i" e "k" para controlar a raquete no lado direito da tela.
+- Certifique-se de manter o caps lock desativado.
 - Mantenha suas raquetes em movimento para acertar as bolas e marcar pontos.
-- Pegue power-ups para obter vantagens ou superar desafios.
-- Gerencie os obstáculos na tela para evitar que eles atrapalhem seu jogo.
 
 ## ♟️ Executando o Jogo
 
@@ -46,9 +36,13 @@ Para executar o Pong2, siga estas etapas:
 
   `git clone https://github.com/P-E-N-T-E-S/Pong2.git`
 
-3. Abra o arquivo `index.html` no seu navegador da web favorito.
+3. Compile o programa:
+   `gcc function.c function.h main.c keyboard.h keyboard.c -o main`
 
-4. Divirta-se jogando Pong2 com seus amigos!
+4. Rode o programa:
+   `./main`
+
+5. Divirta-se jogando Pong2 com seus amigos!
 
 ## 👩‍💻 Membros
 
