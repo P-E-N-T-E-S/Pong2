@@ -39,8 +39,11 @@ void Tela() {
       } else if (i == (int)bolaY && j == (int)bolaX) {
         printf("O");
       } else if (aux == 1 && i == (int)segundaBolaY && j == (int)segundaBolaX) {
-        printf("o");
-      } else {
+        printf("O");
+      }else if(j == largura/2){
+        printf("|");
+      }
+      else {
         printf(" ");
       }
     }
@@ -109,7 +112,7 @@ void AtualizarBola() {
     velocidadeX = -velocidadeX;
     bolaX = 25;
     bolaY = 10;
-    usleep(600000);
+    usleep(300000);
   }
 
   if (bolaX >= largura - 1) {
@@ -117,7 +120,7 @@ void AtualizarBola() {
     velocidadeX = -velocidadeX;
     bolaX = 25;
     bolaY = 10;
-    usleep(600000);
+    usleep(300000);
   }
 
   if (bolaY <= 0 || bolaY >= altura - 1) {
@@ -144,11 +147,17 @@ void AtualizarSegundaBola() {
     if (segundaBolaX <= 0) {
       player.player2 += 1 * val;
       velocidadeX2 = -velocidadeX2;
+      segundaBolaX = 25;
+      segundaBolaY = 10;
+      usleep(300000);
     }
 
     if (segundaBolaX >= largura - 1) {
       player.player1 += 1 * val;
       velocidadeX2 = -velocidadeX2;
+      segundaBolaX = 25;
+      segundaBolaY = 10;
+      usleep(300000);
     }
 
     if (segundaBolaY <= 0 || segundaBolaY >= altura - 1) {
@@ -187,7 +196,6 @@ void Tempo() {
     EscreverArquivo();
     LiberarPonto();
     keyboardDestroy();
-    exit(1);
   }
   printf("\n\t\t\t\t\t %02d:%02d\n\n", mim, seg);
 
@@ -246,7 +254,6 @@ void randomizar(){
     }
   }
 }
-
 
 void PrintarEvento(int x){
   if(x == 1){
