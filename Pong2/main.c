@@ -69,6 +69,7 @@ int main(){
         case 2:
             system("clear");
             printf("\nControles:\n");
+            printf("\nMantenha o Capslock desativado!\n");
             printf("\nJogador 1:\n\nW - Cima\nS - Baixo\n");
             printf("\nJogador 2:\n\nI - Cima\nK - Baixo\n");
             printf("\nEventos:\n");
