@@ -16,7 +16,7 @@ int seg = 30;
 int mim = 1;
 int temp = 0;
 int pass = 0;
-int x, val = 1, aux = 0;
+int x = 0, val = 1, aux = 0;
 struct pontuacao player;
 struct pontuacao *head = NULL;
 
@@ -38,9 +38,9 @@ void Tela() {
         printf("█");
       } else if (i == (int)bolaY && j == (int)bolaX) {
         printf("O");
-      }else if (aux == 1 && i == (int)segundaBolaY && j == (int)segundaBolaX) {
+      } else if (aux == 1 && i == (int)segundaBolaY && j == (int)segundaBolaX) {
         printf("o");
-      }else {
+      } else {
         printf(" ");
       }
     }
@@ -48,15 +48,15 @@ void Tela() {
   }
 
   if (temp == 300) {
-    x = rand() % 3;
-    if(x == 1){
+    x = rand() % 3 - 1;
+    if (x == 1) {
       velocidadeX *= 2;
       velocidadeY *= 2;
     }
-    if(x == 2){
+    else if (x == 2) {
       aux = 1;
     }
-    if(x == 3){
+    else if (x == 3) {
       val = 2;
     }
   }
@@ -69,20 +69,19 @@ void Tela() {
     exit(1);
   }
 
-
   Tempo();
 }
 
 void AdicionarPonto(int p1, int p2) {
-    pontuacao *novo = (pontuacao *)malloc(sizeof(pontuacao));
-    if (novo == NULL) {
-        return;
-    }
+  pontuacao *novo = (pontuacao *)malloc(sizeof(pontuacao));
+  if (novo == NULL) {
+    return;
+  }
 
-    novo->player1 = p1;
-    novo->player2 = p2;
-    novo->next = head;
-    head = novo;
+  novo->player1 = p1;
+  novo->player2 = p2;
+  novo->next = head;
+  head = novo;
 }
 
 void LiberarPonto() {
@@ -90,7 +89,7 @@ void LiberarPonto() {
   pontuacao *prox;
 
   while (atual != NULL) {
-    prox = atual -> next;
+    prox = atual->next;
     free(atual);
     atual = prox;
   }
@@ -99,27 +98,27 @@ void LiberarPonto() {
 }
 
 void EscreverArquivo() {
-    FILE *fptr = fopen("pontos.txt", "a");
-    if (fptr == NULL) {
-        exit(1);
-    }
+  FILE *fptr = fopen("pontos.txt", "a");
+  if (fptr == NULL) {
+    exit(1);
+  }
 
-    fprintf(fptr, "Player 1: %d | Player 2: %d\n", head->player1, head->player2);
-    fclose(fptr);
+  fprintf(fptr, "Player 1: %d | Player 2: %d\n", head->player1, head->player2);
+  fclose(fptr);
 }
 
 void PrintArquivo() {
-    FILE *fptr = fopen("pontos.txt", "r");
-    if (fptr == NULL) {
-        exit(1);
-    }
+  FILE *fptr = fopen("pontos.txt", "r");
+  if (fptr == NULL) {
+    exit(1);
+  }
 
-    char linha[100]; 
-    while (fgets(linha, sizeof(linha), fptr) != NULL) {
-        printf("%s", linha);
-    }
+  char linha[100];
+  while (fgets(linha, sizeof(linha), fptr) != NULL) {
+    printf("%s", linha);
+  }
 
-    fclose(fptr);
+  fclose(fptr);
 }
 
 void AtualizarBola() {
@@ -127,12 +126,12 @@ void AtualizarBola() {
   bolaY += velocidadeY;
 
   if (bolaX <= 0) {
-    player.player2 += 1*val;
+    player.player2 += 1 * val;
     velocidadeX = -velocidadeX;
   }
 
   if (bolaX >= largura - 1) {
-    player.player1 += 1*val;
+    player.player1 += 1 * val;
     velocidadeX = -velocidadeX;
   }
 
@@ -153,7 +152,7 @@ void AtualizarBola() {
 }
 
 void AtualizarSegundaBola() {
-  if(aux == 1){
+  if (aux == 1) {
     segundaBolaX += velocidadeX2;
     segundaBolaY += velocidadeY2;
 
@@ -172,12 +171,14 @@ void AtualizarSegundaBola() {
     }
 
     if (segundaBolaX == 2) {
-      if (segundaBolaY >= barraEsquerda - 2 && segundaBolaY <= barraEsquerda + 2) {
+      if (segundaBolaY >= barraEsquerda - 2 &&
+          segundaBolaY <= barraEsquerda + 2) {
         velocidadeX2 = -velocidadeX2;
       }
     }
 
-    if (segundaBolaX == largura - 3 && (segundaBolaY >= barraDireita - 2 && segundaBolaY <= barraDireita + 2)) {
+    if (segundaBolaX == largura - 3 && (segundaBolaY >= barraDireita - 2 &&
+                                        segundaBolaY <= barraDireita + 2)) {
       velocidadeX2 = -velocidadeX2;
     }
   }
@@ -209,12 +210,12 @@ void Tempo() {
   }
 }
 
-void remover(int x){
-  if(x == 1){
+void remover(int x) {
+  if (x == 1) {
     velocidadeX /= 2;
     velocidadeY /= 2;
   }
-  if(x == 3){
+  if (x == 3) {
     val = 1;
   }
 }
