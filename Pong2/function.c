@@ -66,56 +66,60 @@ void Tela() {
   }
 
   if (mim == 0 && seg == 0) {
-    printf("O tempo acabou !");
-    EscreverArquivo(head);
-    PrintPontos();
     exit(1);
   }
+
 
   Tempo();
 }
 
-void EscreverArquivo(struct pontuacao *head) {
-    FILE *fptr;
-    fptr = fopen("pontos.txt", "wb");
-
-    if (fptr == NULL) {
-        perror("Erro ao abrir o arquivo");
-        exit(1);
-    } else {
-        struct pontuacao *temp = head;
-
-        while (temp != NULL) {
-            fwrite(temp, sizeof(struct pontuacao), 1, fptr);
-              temp = temp->next;
-        }
-
-        fclose(fptr);
+void AdicionarPonto(int p1, int p2) {
+    pontuacao *novo = (pontuacao *)malloc(sizeof(pontuacao));
+    if (novo == NULL) {
+        return;
     }
+
+    novo->player1 = p1;
+    novo->player2 = p2;
+    novo->next = head;
+    head = novo;
 }
 
-void PrintPontos() {
-    FILE *fptr;
-    fptr = fopen("pontos.txt", "rb");
+void LiberarPonto() {
+  pontuacao *atual = head;
+  pontuacao *prox;
 
+  while (atual != NULL) {
+    prox = atual -> next;
+    free(atual);
+    atual = prox;
+  }
+
+  head = NULL;
+}
+
+void EscreverArquivo() {
+    FILE *fptr = fopen("pontos.txt", "a");
     if (fptr == NULL) {
         exit(1);
-    } else {
-        struct pontuacao pontos;
-
-        printf("\n\tPlayer 1: %d\n", player.player1);
-        printf("\tPlayer 2: %d\n", player.player2);
-        puts("==================================");
-
-        fseek(fptr, 0, SEEK_SET);
-        while (fread(&pontos, sizeof(struct pontuacao), 1, fptr) == 1) {
-            printf("\n\tPlayer 1: %d\n", pontos.player1);
-            printf("\tPlayer 2: %d\n", pontos.player2);
-            puts("==================================");
-        }
-
-        fclose(fptr);
     }
+
+    fprintf(fptr, "Player 1: %d | Player 2: %d\n", head->player1, head->player2);
+    fclose(fptr);
+}
+
+void PrintArquivo() {
+    FILE *fptr = fopen("pontos.txt", "r");
+    if (fptr == NULL) {
+        exit(1);
+    }
+
+    char linha[100]; 
+    while (fgets(linha, sizeof(linha), fptr) != NULL) {
+        printf("%s", linha);
+    }
+
+    fclose(fptr);
 }
 
 void AtualizarBola() {
@@ -189,7 +193,11 @@ void Tempo() {
   }
 
   if (mim == 0 && seg == 0) {
-    printf("O tempo acabou !");
+    printf("O tempo acabou!\n");
+    printf("Player 1: %d | Player 2: %d\n", player.player1, player.player2);
+    AdicionarPonto(player.player1, player.player2);
+    EscreverArquivo();
+    LiberarPonto();
     keyboardDestroy();
     exit(1);
   }

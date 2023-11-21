@@ -12,13 +12,10 @@ int barraDireita = 10;
 int main(){
     pontuacao pontos;
     int op;
-    FILE *file;
-    file = fopen("pontos.txt", "w");
-    int jogando = 0;
 
-    if(file == NULL){
-        exit(1);
-    }
+    int jogando = 0;
+    struct pontuacao player;
+    struct pontuacao *head = NULL;
 
 
     while(1){
@@ -53,7 +50,7 @@ int main(){
                             Tela();
                         }
                     }
-                    if (keyPressed == 'j')
+                    if (keyPressed == 'k')
                     {
                         if (barraDireita < altura -4)
                         {
@@ -73,7 +70,7 @@ int main(){
             system("clear");
             printf("\nControles:\n");
             printf("\nJogador 1:\n\nW - Cima\nS - Baixo\n");
-            printf("\nJogador 2:\n\nI - Cima\nJ - Baixo\n");
+            printf("\nJogador 2:\n\nI - Cima\nK - Baixo\n");
             printf("\nEventos:\n");
             printf("\nA cada 30s um novo evento aparece, e eles são:\n");
             printf("\nBola dupla\nPontos duplos\nVelocidade Dobrada\n\n");
@@ -81,12 +78,9 @@ int main(){
 
         case 3:
             system("clear");
-            puts("\n\nPONTUAÇÃO");
+            puts("\n\nHISTÓRICO DE PONTUAÇÃO");
             puts("==================================");
-            fseek(file, 0, SEEK_SET);
-            while (fread(&pontos, sizeof(pontuacao), 1, file) == 1){
-                PrintPontos(pontos);
-            }
+            PrintArquivo();
             break;
 
         default:
