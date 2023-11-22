@@ -60,9 +60,9 @@ int main(){
                     }
                 }
                 Tela();
+                Tempo();
                 AtualizarBola();
                 AtualizarSegundaBola();
-                usleep(100000);
             }
             keyboardDestroy();
             break;

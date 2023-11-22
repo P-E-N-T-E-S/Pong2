@@ -49,9 +49,15 @@ void Tela() {
     }
     printf("\n");
   }
-
-  Tempo();
+  printf("\n\t\t\t\t\t %02d:%02d\n\n", mim, seg);
   PrintarEvento(x);
+
+  if(x == 1){
+    usleep(50000);
+  }
+  else{
+    usleep(100000);
+  }
 }
 
 void AdicionarPonto(int p1, int p2) {
@@ -110,17 +116,11 @@ void AtualizarBola() {
   if (bolaX <= 0) {
     player.player2 += 1 * val;
     velocidadeX = -velocidadeX;
-    bolaX = 25;
-    bolaY = 10;
-    usleep(300000);
   }
 
   if (bolaX >= largura - 1) {
     player.player1 += 1 * val;
     velocidadeX = -velocidadeX;
-    bolaX = 25;
-    bolaY = 10;
-    usleep(300000);
   }
 
   if (bolaY <= 0 || bolaY >= altura - 1) {
@@ -147,17 +147,11 @@ void AtualizarSegundaBola() {
     if (segundaBolaX <= 0) {
       player.player2 += 1 * val;
       velocidadeX2 = -velocidadeX2;
-      segundaBolaX = 25;
-      segundaBolaY = 10;
-      usleep(300000);
     }
 
     if (segundaBolaX >= largura - 1) {
       player.player1 += 1 * val;
       velocidadeX2 = -velocidadeX2;
-      segundaBolaX = 25;
-      segundaBolaY = 10;
-      usleep(300000);
     }
 
     if (segundaBolaY <= 0 || segundaBolaY >= altura - 1) {
@@ -196,8 +190,8 @@ void Tempo() {
     EscreverArquivo();
     LiberarPonto();
     keyboardDestroy();
+    exit(1);
   }
-  printf("\n\t\t\t\t\t %02d:%02d\n\n", mim, seg);
 
   if (seg == 0) {
     mim--;
@@ -207,8 +201,6 @@ void Tempo() {
 
 void remover(int x) {
   if (x == 1) {
-    velocidadeX = 1;
-    velocidadeY = 1;
     x = 0;
   }
   if(x == 2){
@@ -224,11 +216,10 @@ void remover(int x) {
 void randomizar(){
     srand(time(NULL));
     if (temp == 300) {
-    x = 1 + rand() % 3;
-    printf("%d", x);
+      x = 1 + rand() % 3;
+      printf("%d", x);
     if (x == 1) {
-      velocidadeX *= 2;
-      velocidadeY *= 2;
+      x = 1;
     }
     else if (x == 2) {
       aux = 1;
@@ -243,8 +234,7 @@ void randomizar(){
     x = 1 + rand() % 3;
     printf("%d", x);
     if (x == 1) {
-      velocidadeX *= 2;
-      velocidadeY *= 2;
+      x = 1;
     }
     else if (x == 2) {
       aux = 1;
