@@ -1,8 +1,0 @@
-Player 1: 18 | Player 2: 4
-Player 1: 17 | Player 2: 26
-Player 1: 9 | Player 2: 9
-Player 1: 16 | Player 2: 13
-Player 1: 11 | Player 2: 13
-Player 1: 12 | Player 2: 9
-Player 1: 17 | Player 2: 12
-Player 1: 14 | Player 2: 12
