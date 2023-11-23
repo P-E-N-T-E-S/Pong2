@@ -5,12 +5,12 @@
 #include <unistd.h>
 #include <time.h>
 
-int bolaX;
-int bolaY;
-int velocidadeX;
-int velocidadeY;
-int barraEsquerda;
-int barraDireita;
+extern int bolaX;
+extern int bolaY;
+extern int velocidadeX;
+extern int velocidadeY;
+extern int barraEsquerda;
+extern int barraDireita;
 #define altura 20
 #define largura 50
 
