@@ -13,8 +13,10 @@ extern int barraEsquerda;
 extern int barraDireita;
 #define altura 20
 #define largura 50
-
-
+#define COR_AZUL "\x1b[34m"
+#define COR_RESET "\x1b[0m"
+#define COR_VERMELHO "\x1b[31m"
+#define COR_VERDE "\x1b[32m"
 typedef struct pontuacao{
     int player1;
     int player2;
@@ -34,4 +36,5 @@ void randomizar();
 void remover(int x);
 void AtualizarSegundaBola();
 void PrintarEvento(int x);
+void PrintSd();
 #endif

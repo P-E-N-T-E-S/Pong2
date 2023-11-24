@@ -32,22 +32,20 @@ int main(){
                 if (keyhit()) {
                     char keyPressed = readch();
                     if (keyPressed == 'w') {
-                        if (barraEsquerda > 0) {
+                        if (barraEsquerda > 3) {
                             barraEsquerda--;
-                            Tela();
+
                         }
                     }
                     if(keyPressed == 's'){
                         if(barraEsquerda < altura - 4){
                             barraEsquerda++;
-                            Tela();
                         }
                     }
                     if (keyPressed == 'i')
                     {
                         if(barraDireita > 0){
                             barraDireita--;
-                            Tela();
                         }
                     }
                     if (keyPressed == 'k')
@@ -55,7 +53,6 @@ int main(){
                         if (barraDireita < altura -4)
                         {
                             barraDireita++;
-                            Tela();
                         }
                     }
                 }

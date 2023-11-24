@@ -19,44 +19,39 @@ int pass = 0;
 int x = 0, val = 1, aux = 0;
 struct pontuacao player;
 struct pontuacao *head = NULL;
-
 void Tela() {
   LimparTela();
   randomizar();
-  printf("\t\t %d | %d \n\n", player.player1, player.player2);
-
+  PrintSd();
   for (int i = 0; i < altura; i++) {
-    for (int j = 0; j < largura; j++) {
-      if (j == 0 || j == largura - 1) {
-        printf("░");
-      } else if ((i == 0 || i == altura - 1) && (j > 0 && j < largura - 1)) {
-        printf("░");
-      } else if (j == 2 && (i >= barraEsquerda - 2 && i <= barraEsquerda + 2)) {
-        printf("█");
-      } else if (j == largura - 3 &&
-                 (i >= barraDireita - 2 && i <= barraDireita + 2)) {
-        printf("█");
-      } else if (i == (int)bolaY && j == (int)bolaX) {
-        printf("O");
-      } else if (aux == 1 && i == (int)segundaBolaY && j == (int)segundaBolaX) {
-        printf("O");
-      }else if(j == largura/2){
-        printf("|");
+      for (int j = 0; j < largura; j++) {
+          if (j == 0 || j == largura - 1) {
+              printf("%s█%s", COR_AZUL, COR_RESET);
+          } else if ((i == 0 || i == altura - 1) && (j > 0 && j < largura - 1)) {
+              printf("%s█%s", COR_AZUL, COR_RESET);
+          } else if (j == 2 && (i >= barraEsquerda - 2 && i <= barraEsquerda + 2)) {
+              printf("█");
+          } else if (j == largura - 3 && (i >= barraDireita - 2 && i <= barraDireita + 2)) {
+              printf("█");
+          } else if (i == (int)bolaY && j == (int)bolaX) {
+              printf("%s●%s", COR_VERMELHO, COR_RESET);
+          } else if (aux == 1 && i == (int)segundaBolaY && j == (int)segundaBolaX) {
+              printf("%s●%s", COR_VERMELHO, COR_RESET);
+          } else if (j == largura / 2) {
+              printf("|");
+          } else {
+              printf(" ");
+          }
       }
-      else {
-        printf(" ");
-      }
-    }
-    printf("\n");
+      printf("\n");
   }
-  printf("\n\t\t\t\t\t %02d:%02d\n\n", mim, seg);
   PrintarEvento(x);
 
   if(x == 1){
     usleep(50000);
   }
   else{
-    usleep(100000);
+    usleep(75000);
   }
 }
 
@@ -255,4 +250,14 @@ void PrintarEvento(int x){
   if(x == 3){
     printf("\n\tPontuação duplicada, essa é a hora de virar!\n\n");
   }
+}
+
+
+
+void PrintSd(){
+  printf("%s\n\t\t\t\t\t %02d:%02d\n\n%s",COR_VERDE, mim, seg, COR_RESET);
+  for (int i = 0; i < 23; i++) {
+    printf(" ");
+  }
+  printf("%s%d | %d\n\n%s", COR_VERDE, player.player1, player.player2, COR_RESET);
 }
